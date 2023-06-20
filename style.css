@@ -1,0 +1,118 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #000;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    perspective: 10em;
+    font-size: 50px;
+    perspective-origin: 50% 40%;
+
+  }
+  *:not(:empty) {
+    transform-style: preserve-3d;
+  }
+
+
+  .camera{
+        animation: rotateCamera 30s infinite linear;
+
+  }
+
+  @keyframes rotateCamera {
+    to{
+        transform: rotateY(360deg);
+    }
+    
+  }
+
+
+  .ball-shadow{
+    position: absolute;
+    width: 100px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-0%, -50%);
+    height: 100px;
+    background-image: radial-gradient(#000, #0000 70%);
+    animation: animateShadow 1.5s infinite ease-in;
+
+
+  }
+.camera{
+    position: relative;
+}
+
+.floor {
+    position: absolute;
+    width: 15em;
+    height: 15em;
+    top: 1em;
+    background-color: #fed;
+    background-image: radial-gradient(#0000, 50%, #000 66%), repeating-conic-gradient(from 89deg, #341ab6 0 89deg, #1f3549 0 185deg);
+    background-repeat: repeat;
+    background-size: 100%, 1em 1em;
+    transform: translate(-50%, -50%) rotateX(90deg);
+  }
+
+.ball{
+    position: absolute;
+    --width:100px;
+    width: var(--width);
+    height: var(--width);
+    border-radius: 100%;
+    /* transform: translate(-50%, -100%); */
+    
+    left: 50%;
+    bottom: -50px;
+    background-image: radial-gradient( circle at top, #e87878, #000000 );
+        animation: bounce 1.3s infinite ease-in,
+    rotateCamera 30s infinite linear reverse;
+
+}
+
+@keyframes rotateBall {
+    0%,100%{
+        transform: rotatey(0deg);
+    }
+    50%{
+        transform: rotatey(180deg);
+
+    }
+    
+  }
+
+@keyframes bounce {
+    0%{
+        bottom: 100px;
+    }
+    50%{
+        bottom: -50px;       
+         animation-timing-function: ease-out;
+    }
+    100%{
+        bottom: 100px;
+    }
+}
+
+@keyframes animateShadow {
+    0%,100%{
+        transform: translate(0%, -50%) scale(1.5);
+    }
+    50%{
+        transform: translate(0%, -50%) scale(1);
+        animation-timing-function: ease-out;
+
+    }
+
+
+    
+}
+
+
