@@ -12,7 +12,8 @@
     overflow: hidden;
     perspective: 10em;
     font-size: 50px;
-    perspective-origin: 50% 40%;
+    perspective-origin: 50% 10%;
+    margin-top: 60px;
 
   }
   *:not(:empty) {
@@ -41,10 +42,12 @@
     transform: translate(-0%, -50%);
     height: 100px;
     background-image: radial-gradient(#000, #0000 70%);
-    animation: animateShadow 1.5s infinite ease-in;
-
-
+    animation: animateShadow 1.3s infinite cubic-bezier(0.7, 0.4, 0.48, 0.62);
   }
+  
+  
+
+
 .camera{
     position: relative;
 }
@@ -103,11 +106,10 @@
 
 @keyframes animateShadow {
     0%,100%{
-        transform: translate(0%, -50%) scale(1.5);
+        transform: translate(0%, -50%) scale(1.5) translateZ(10px);
     }
     50%{
-        transform: translate(0%, -50%) scale(1);
-        animation-timing-function: ease-out;
+        transform: translate(0%, -50%) scale(1) translateZ(10px);
 
     }
 
